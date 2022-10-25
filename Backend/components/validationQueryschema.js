@@ -14,5 +14,12 @@ const schemas = {
     skip: Joi.string().required(),
     mainCategoryId: Joi.string().required()
    }), 
+   getProducts:Joi.object().keys({ 
+    limit: Joi.string().required(),
+    skip: Joi.string().required(),
+    mainCategoryId: Joi.string().optional().allow(""),
+    subCategoryId: Joi.string().optional().allow(""),
+    categoryId: Joi.string().optional().allow("")
+   })
 }; 
 module.exports = schemas;

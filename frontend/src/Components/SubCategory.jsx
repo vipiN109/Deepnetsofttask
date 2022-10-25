@@ -76,7 +76,7 @@ function SubCategory() {
               <StyledTableCell component="th" scope="row">
                 {row.subCategory}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.productCount}</StyledTableCell>
+              <StyledTableCell align="center">{row.productCount}</StyledTableCell>
               <StyledTableCell align="right">
               <Tooltip title="View the subcategory">
                 <IconButton onClick={()=>viewProducts(row._id,row.productCount)}>

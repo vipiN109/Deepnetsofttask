@@ -212,7 +212,7 @@ module.exports = {
                 "$or":[
                     { mainCategoryId:mongoose.Types.ObjectId(req.query["mainCategoryId"])},
                     { subCategoryId:mongoose.Types.ObjectId(req.query["subCategoryId"])},
-                    { categoryId:mongoose.Types.ObjectId(req.query["categoryId"])}
+                    { catgoryId:mongoose.Types.ObjectId(req.query["categoryId"])}
                  ]
             }
         }  

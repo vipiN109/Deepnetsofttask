@@ -60,7 +60,15 @@ function Products() {
                         setCategorys(response.data.data);
                     }
                 }) 
-            }else
+            }else if(pathcheck.pathname.includes('category')){
+                await axios.get(server + "/getProducts",{params:{limit:"10",skip:"0",categoryId:id}},{}).then((response)=>{
+                    if(response.data.code===200){
+                        toast.success(response.data.message)
+                        setCategorys(response.data.data);
+                    }
+                }) 
+            }
+            else
             {
                 await axios.get(server + "/getProducts",{params:{limit:"10",skip:"0"}},{params:{}}).then((response)=>{
                     if(response.data.code===200){
@@ -85,7 +93,7 @@ function Products() {
         <TableHead>
           <TableRow>
             <StyledTableCell>Products</StyledTableCell>
-            {/* <StyledTableCell align="center">Products count</StyledTableCell> */}
+            <StyledTableCell align="center">Products price</StyledTableCell>
             {/* <StyledTableCell align="center"></StyledTableCell> */}
           </TableRow>
         </TableHead>
@@ -95,6 +103,7 @@ function Products() {
               <StyledTableCell component="th" scope="row">
                 {row.productName}
               </StyledTableCell>
+              <StyledTableCell align="center">{row.price}</StyledTableCell>
               {/* <StyledTableCell align="right">{row.productCount}</StyledTableCell>
               <StyledTableCell align="right">
               <Tooltip title="View the subcategory">

@@ -17,6 +17,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/subCategory/:id" element={<Products />} />
         <Route path="/products/mainCategory/:id" element={<Products />} />
+        <Route path="/products/category/:id" element={<Products />} />
         </Routes>
         <ToastContainer/>
     </div>

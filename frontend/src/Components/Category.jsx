@@ -50,9 +50,21 @@ function Category() {
         fetchData()
     },[])
 
-    const viewMainCategorys=(id,count)=>{
+    const viewMainCategorys=async(id,count)=>{
         if(count>0){
-            history(`/mainCategorys/${id}`)
+            const data =await axios.get(server + "/get_mainCategory",{params:{limit:"10",skip:"0",categoryId:id}},{})
+            if(data.data.data.length===0){
+              history(`/products/category/${id}`)        
+            }else if(data.data.data.length>0){
+              history(`/mainCategorys/${id}`)
+              // var link=`/products/mainCategory/${mainCategoryId}`
+              // console.log("we are here",link)
+              
+            }else{
+              history(`/`)
+            }
+           
+            // history(`/mainCategorys/${id}`)
         }else{
             toast.warn("No products found")
         }
@@ -75,7 +87,7 @@ function Category() {
               <StyledTableCell component="th" scope="row">
                 {row.categoryName}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.productCount}</StyledTableCell>
+              <StyledTableCell align="center">{row.productCount}</StyledTableCell>
               <StyledTableCell align="right">
               <Tooltip title="View the subcategory">
                 <IconButton onClick={()=>viewMainCategorys(row._id,row.productCount)}>

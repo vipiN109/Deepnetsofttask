@@ -87,7 +87,7 @@ function MainCategory() {
               <StyledTableCell component="th" scope="row">
                 {row.mainCategory}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.productCount}</StyledTableCell>
+              <StyledTableCell align="center">{row.productCount}</StyledTableCell>
               <StyledTableCell align="right">
               <Tooltip title="View the subcategory">
                 <IconButton onClick={()=>viewSubcategorys(row._id,row.productCount)}>
